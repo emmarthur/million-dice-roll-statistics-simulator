@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from "react";
 import type { ResultRow } from "@/lib/simulateDiceRolls";
 import type { WorkerResponse } from "@/workers/simulateDiceRolls.worker";
+import { DemoHelpSection } from "@/components/DemoHelpSection";
 
 const MIN_DICE = 1;
 const MAX_DICE = 50;
@@ -26,7 +27,7 @@ export function MillionDiceSimulator() {
     setProgress(0);
     setRunning(true);
 
-    // Delegate heavy simulation to a worker; book logic lives in simulateDiceRolls.ts.
+    // Heavy loop runs in a worker so the UI stays responsive.
     const worker = new Worker(
       new URL("../workers/simulateDiceRolls.worker.ts", import.meta.url),
     );
@@ -59,9 +60,7 @@ export function MillionDiceSimulator() {
           Million Dice Roll Statistics Simulator
         </h1>
         <p className="mt-2 text-sm text-slate-600">
-          Book-guided demo #348 — Al Sweigart,{" "}
-          <em>The Big Book of Small Python Projects</em> (Project #46). Rolls
-          one million times and shows how often each sum appears.
+          Roll one million times and see how often each dice sum appears.
         </p>
       </header>
 
@@ -166,6 +165,8 @@ export function MillionDiceSimulator() {
           </table>
         </section>
       )}
+
+      <DemoHelpSection />
     </div>
   );
 }
