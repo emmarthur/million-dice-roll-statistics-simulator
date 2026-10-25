@@ -59,9 +59,6 @@ export function MillionDiceSimulator() {
         <h1 className="text-2xl font-bold text-slate-900">
           Million Dice Roll Statistics Simulator
         </h1>
-        <p className="mt-2 text-sm text-slate-600">
-          Roll one million times and see how often each dice sum appears.
-        </p>
       </header>
 
       <label className="block text-sm font-medium text-slate-700">
