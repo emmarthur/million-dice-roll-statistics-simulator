@@ -14,6 +14,7 @@ export function MillionDiceSimulator() {
   const [rows, setRows] = useState<ResultRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Scale bar chart widths relative to the most common sum.
   const maxPercentage = useMemo(() => {
     if (!rows?.length) return 0;
     return Math.max(...rows.map((r) => r.percentage));
@@ -25,6 +26,7 @@ export function MillionDiceSimulator() {
     setProgress(0);
     setRunning(true);
 
+    // Delegate heavy simulation to a worker; book logic lives in simulateDiceRolls.ts.
     const worker = new Worker(
       new URL("../workers/simulateDiceRolls.worker.ts", import.meta.url),
     );

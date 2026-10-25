@@ -1,3 +1,4 @@
+/** Book uses exactly one million iterations for stable percentage estimates. */
 export const TOTAL_ROLLS = 1_000_000;
 
 export type DiceResults = Record<number, number>;
@@ -8,6 +9,7 @@ export type ResultRow = {
   percentage: number;
 };
 
+/** Keys are every possible sum from N dice (min N, max N×6); counts start at zero. */
 export function createEmptyResults(numberOfDice: number): DiceResults {
   const results: DiceResults = {};
   for (let i = numberOfDice; i <= numberOfDice * 6; i += 1) {
@@ -31,6 +33,7 @@ export function simulateRolls(
       lastReportTime = performance.now();
     }
 
+    // Roll N dice (1–6 each) and tally the sum — same as random.randint(1, 6) in Python.
     let total = 0;
     for (let j = 0; j < numberOfDice; j += 1) {
       total += Math.floor(Math.random() * 6) + 1;
@@ -45,6 +48,7 @@ export function simulateRolls(
   return results;
 }
 
+/** Book prints percentage as round(count / 10000, 1) — equivalent to count / 1_000_000 × 100. */
 export function resultsToRows(
   results: DiceResults,
   numberOfDice: number,

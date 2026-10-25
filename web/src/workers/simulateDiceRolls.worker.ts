@@ -12,6 +12,7 @@ export type WorkerResponse =
   | { type: "progress"; percent: number }
   | { type: "done"; rows: ResultRow[] };
 
+// Runs the 1M-roll loop off the main thread so the UI stays responsive.
 self.onmessage = (event: MessageEvent<WorkerRequest>) => {
   const { numberOfDice } = event.data;
   const results = simulateRolls(numberOfDice, (percent) => {

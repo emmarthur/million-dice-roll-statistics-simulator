@@ -19,6 +19,7 @@ Enter how many six-sided dice you want to roll:"""
 )
 numberOfDice = int(input("> "))
 
+# Every possible sum for N dice gets a counter starting at zero.
 results = {}
 for i in range(numberOfDice, (numberOfDice * 6) + 1):
     results[i] = 0
@@ -32,11 +33,11 @@ for i in range(1000000):
 
     total = 0
     for j in range(numberOfDice):
-        total = total + random.randint(1, 6)
+        total = total + random.randint(1, 6)  # one six-sided die
     results[total] = results[total] + 1
 
 print("TOTAL - ROLLS - PERCENTAGE")
 for i in range(numberOfDice, (numberOfDice * 6) + 1):
     roll = results[i]
-    percentage = round(results[i] / 10000, 1)
+    percentage = round(results[i] / 10000, 1)  # same as count / 1_000_000 * 100
     print(" {} - {} rolls - {}%".format(i, roll, percentage))
