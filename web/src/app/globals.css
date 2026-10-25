@@ -1,7 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --demo-font: "DM Sans", system-ui, sans-serif;
+  --demo-display: "Outfit", var(--demo-font);
+  --demo-bg-deep: #1e1b4b;
+  --demo-accent: #f59e0b;
+  --demo-accent-2: #818cf8;
+  --demo-text: #f8fafc;
+  --demo-muted: #cbd5e1;
+  --demo-card: rgba(255, 255, 255, 0.08);
+  --demo-border: rgba(255, 255, 255, 0.12);
+}
+
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  font-family: var(--demo-font);
+  color: var(--demo-text);
+  min-height: 100vh;
+  background: linear-gradient(145deg, #0f172a 0%, var(--demo-bg-deep) 45%, #312e81 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .demo-shell {
+    @apply relative mx-auto max-w-3xl px-4 py-10;
+  }
+
+  .demo-blob {
+    @apply pointer-events-none fixed rounded-full opacity-40 blur-3xl;
+  }
+
+  .demo-blob-a {
+    @apply -right-20 -top-24 h-96 w-96 bg-amber-500;
+  }
+
+  .demo-blob-b {
+    @apply -bottom-24 -left-20 h-80 w-80 bg-indigo-500;
+  }
+
+  .demo-hero {
+    @apply mb-8 text-center;
+  }
+
+  .demo-hero-icon {
+    @apply mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl text-3xl shadow-lg;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    box-shadow: 0 8px 28px rgba(245, 158, 11, 0.35);
+  }
+
+  .demo-title {
+    font-family: var(--demo-display);
+    @apply text-3xl font-bold tracking-tight;
+    background: linear-gradient(90deg, #fff, #fcd34d, #a5b4fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .demo-tagline {
+    @apply mt-2 text-sm;
+    color: var(--demo-muted);
+  }
+
+  .demo-card {
+    background: var(--demo-card);
+    border: 1px solid var(--demo-border);
+    @apply mb-6 rounded-2xl p-5 shadow-2xl backdrop-blur-md;
+  }
+
+  .demo-input {
+    @apply mt-2 block w-full max-w-xs rounded-lg border-2 px-3 py-2.5 text-lg font-semibold text-white disabled:opacity-60;
+    background: rgba(15, 23, 42, 0.55);
+    border-color: rgba(129, 140, 248, 0.4);
+  }
+
+  .demo-input:focus {
+    @apply outline-none ring-2 ring-amber-400/40;
+    border-color: #fbbf24;
+  }
+
+  .demo-btn-primary {
+    @apply mt-4 rounded-lg px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50;
+    background: linear-gradient(135deg, #6366f1, #f59e0b);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+  }
+
+  .demo-progress-track {
+    @apply h-2.5 overflow-hidden rounded-full;
+    background: rgba(15, 23, 42, 0.7);
+  }
+
+  .demo-progress-fill {
+    @apply h-full rounded-full transition-all duration-150;
+    background: linear-gradient(90deg, #818cf8, #f59e0b, #fcd34d);
+  }
+
+  .demo-help {
+    @apply rounded-2xl p-5 text-sm leading-relaxed;
+    background: var(--demo-card);
+    border: 1px solid var(--demo-border);
+    color: var(--demo-muted);
+  }
+
+  .demo-help h2 {
+    font-family: var(--demo-display);
+    @apply mb-3 text-lg font-semibold text-white;
+  }
+
+  .demo-help h3 {
+    @apply mt-4 font-medium text-slate-200;
+  }
+
+  .demo-help strong {
+    @apply text-amber-300;
+  }
+
+  .demo-results-title {
+    font-family: var(--demo-display);
+    @apply text-lg font-semibold text-white;
+  }
+
+  .demo-bar-track {
+    @apply h-5 flex-1 rounded-md;
+    background: rgba(15, 23, 42, 0.5);
+  }
+
+  .demo-bar-fill {
+    @apply h-full rounded-md;
+    background: linear-gradient(90deg, #6366f1, #fbbf24);
+  }
+
+  .demo-table {
+    @apply mt-8 w-full border-collapse text-sm text-slate-300;
+  }
+
+  .demo-table th {
+    @apply border-b border-white/10 py-2 text-left text-slate-400;
+  }
+
+  .demo-table td {
+    @apply border-b border-white/5 py-2;
+  }
 }
