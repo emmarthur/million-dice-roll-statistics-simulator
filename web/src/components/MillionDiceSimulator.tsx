@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import type { ResultRow } from "@/lib/simulateDiceRolls";
 import type { WorkerResponse } from "@/workers/simulateDiceRolls.worker";
 import { DemoHelpSection } from "@/components/DemoHelpSection";
+import { HelpJumpButton } from "@/components/HelpJumpButton";
 
 const MIN_DICE = 1;
 const MAX_DICE = 50;
@@ -64,6 +65,7 @@ export function MillionDiceSimulator() {
         <p className="demo-tagline">
           One million rolls — see how often each sum appears
         </p>
+        <HelpJumpButton />
       </header>
 
       <section className="demo-card">
